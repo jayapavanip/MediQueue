@@ -1,14 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import BookAppointment from './pages/BookAppointment';
+import ViewResults from './pages/ViewResults';
+import DoctorView from './pages/DoctorView';
 
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100">
-      <h1 className="text-4xl font-bold text-blue-700">Welcome to MediQueue 👨‍⚕️</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/book" element={<BookAppointment />} />
+      <Route path="/results" element={<ViewResults />} />
+      <Route path="/doctor" element={<DoctorView />} />
+    </Routes>
   );
 }
 
-export default App
+export default App;
