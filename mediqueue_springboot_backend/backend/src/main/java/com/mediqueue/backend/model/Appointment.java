@@ -2,7 +2,7 @@ package com.mediqueue.backend.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.util.Date;
+import java.util.*;
 
 @Document(collection = "UserData")
 public class Appointment {
@@ -18,6 +18,8 @@ public class Appointment {
     private String selectedSlot;
     private String symptoms;
     private String status;
+    private String predictedDisease;
+    private List<String> predictedSymptoms;
 
     public Appointment() {}
 
@@ -113,6 +115,22 @@ public class Appointment {
     public void setStatus(String status) {
         this.status = status;
     }
-    // Getters and setters for all fields
+
+    public String getPredictedDisease() {
+        return predictedDisease;
+    }
+
+    public void setPredictedDisease(String predictedDisease) {
+        this.predictedDisease = predictedDisease;
+    }
+
+    public List<String> getPredictedSymptoms() {
+        return predictedSymptoms;
+    }
+
+    public void setPredictedSymptoms(List<String> predictedSymptoms) {
+        this.predictedSymptoms = predictedSymptoms;
+    }
+// Getters and setters for all fields
     // (You can use Lombok if you prefer)
 }

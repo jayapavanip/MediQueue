@@ -1,0 +1,6 @@
+{
+  "Flu": ["fever", "cough", "sore throat"],
+  "COVID-19": ["dry cough", "fever", "fatigue"],
+  "Malaria": ["chills", "fever", "sweating"],
+  "Bronchial Asthma": ["Fever", "Cough"]
+}
