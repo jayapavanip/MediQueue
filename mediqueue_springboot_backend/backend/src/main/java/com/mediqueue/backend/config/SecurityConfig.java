@@ -20,13 +20,12 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .formLogin(Customizer.withDefaults()); // optional based on need
-
-        return http.build();
+                        .requestMatchers("/api/**").permitAll()  // allow your APIs
+                        .anyRequest().permitAll()               // prevent 403 for everything else
+                );
+        return http.build(); // ✅ Removed formLogin()
     }
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

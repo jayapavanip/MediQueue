@@ -2,6 +2,10 @@ package com.mediqueue.backend.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 import java.util.*;
 
 @Document(collection = "UserData")
@@ -14,12 +18,16 @@ public class Appointment {
     private String gender;
     private double weight;
     private double height;
-    private Date date;
+    @Field("date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate date;
     private String selectedSlot;
     private String symptoms;
     private String status;
     private String predictedDisease;
     private List<String> predictedSymptoms;
+    private Map<String, String> symptomSeverity;
+    private String finalAppointmentTime;
 
     public Appointment() {}
 
@@ -84,11 +92,11 @@ public class Appointment {
         this.height = height;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -131,6 +139,20 @@ public class Appointment {
     public void setPredictedSymptoms(List<String> predictedSymptoms) {
         this.predictedSymptoms = predictedSymptoms;
     }
-// Getters and setters for all fields
-    // (You can use Lombok if you prefer)
+
+    public Map<String, String> getSymptomSeverity() {
+        return symptomSeverity;
+    }
+
+    public void setSymptomSeverity(Map<String, String> symptomSeverity) {
+        this.symptomSeverity = symptomSeverity;
+    }
+
+    public String getFinalAppointmentTime() {
+        return finalAppointmentTime;
+    }
+
+    public void setFinalAppointmentTime(String finalAppointmentTime) {
+        this.finalAppointmentTime = finalAppointmentTime;
+    }
 }

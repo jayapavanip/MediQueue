@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const availableSlots = [
   { time: "10:00 AM", isBooked: false },
@@ -9,6 +10,8 @@ const availableSlots = [
 ];
 
 export default function BookAppointment() {
+
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
@@ -42,6 +45,7 @@ export default function BookAppointment() {
       const data = await res.json();
       alert("Appointment saved successfully!");
       console.log("Saved:", data);
+      navigate("/symptom-severity", { state: { appointment: data } });
       // Optionally reset form or navigate
     } catch (error) {
       console.error("Error:", error);
